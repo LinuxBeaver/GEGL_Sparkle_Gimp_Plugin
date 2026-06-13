@@ -38,10 +38,10 @@ crop
 #ifdef GEGL_PROPERTIES
 
 property_color (color, _("Color"), "#ffffff")
-    description (_("The main sparkle's color"))
+    description (_("The main sparkleꞌs color"))
 
 property_color  (colorshadow, _("Shadow Color"), "#74e3ff")
-  description   (_("The main sparkle's optional shadow color"))
+  description   (_("The main sparkleꞌs optional shadow color"))
 
 property_double (x, _("Shadow Clone X"), -126)
   description   (_("Horizontal shadow offset"))
@@ -59,7 +59,7 @@ property_double (y, _("Shadow Clone  Y"), -8)
 
 property_double (opacity, _("Shadow clone mode opacity --SLIDE TO ENABLE SHADOW"), 0.0)
   description   (_("A dropshadow that creates the apperance of a second sparkle field. It depends on the sparkle above as it is its drop shadow."))
-  value_range   (0.0, 1.5)
+  value_range   (0.0, 1.0)
   ui_steps      (0.1, 0.10)
 
 
@@ -108,14 +108,14 @@ static void attach (GeglOperation *operation)
                                     "operation", "gimp:layer-mode", "layer-mode", 57,  "blend-space", 1, NULL);
 
 /*
-Note to future devs, I am fully aware of GEGL Color to Alpha, for some reason it doesn't do the job as good as Gimp's color erase. It leaves pink artifact.
+Note to future devs, I am fully aware of GEGL Color to Alpha, for some reason it doesnꞌt do the job as good as Gimpꞌs color erase. It leaves pink artifact.
 If you change this to gegl:color-to-alpha it will ruin the filter.
  */
 
  divide = gegl_node_new_child (gegl,
                                     "operation", "gimp:layer-mode", "layer-mode", 41,  "blend-space", 1, "opacity", 0.03, NULL);
 /*
-GEGL's divide blend mode doesn't have a built in opacity. Gimp's does thus Gimp's wins.
+GEGLꞌs divide blend mode doesnꞌt have a built in opacity. Gimpꞌs does thus Gimpꞌs wins.
  */
 
 
@@ -154,7 +154,7 @@ Crops are bug fixers. They solve the delayed color update bug and allow gaussian
                                   "operation", "gegl:src",
                                   NULL);
 /*
-This, src - is GEGL's equal to the Replace blend mode.
+This, src - is GEGLꞌs equal to the Replace blend mode.
  */
 
 
